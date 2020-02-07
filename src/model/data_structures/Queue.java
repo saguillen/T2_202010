@@ -1,5 +1,5 @@
 package model.data_structures;
 
-public class Queue {
+public class Queue<T extends Comparable<T>>{
 
 }
