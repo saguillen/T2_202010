@@ -9,6 +9,8 @@ public class Stack<T extends Comparable<T>> {
 	public void push(T nuevo)
 	{
 		//Test
+
+		//Test IntelliJ
 		
 	}
 }
