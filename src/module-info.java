@@ -7,4 +7,5 @@ module T2_202010 {
 	exports model.data_structures;
 
 	requires junit;
+	requires com.google.gson;
 }

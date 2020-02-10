@@ -1,6 +1,15 @@
 package model.logic;
 
+import model.data_structures.Multa;
 import model.data_structures.Stack;
+import com.google.gson.stream.JsonReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 /**
  * Definicion del modelo del mundo
@@ -8,7 +17,7 @@ import model.data_structures.Stack;
  */
 public class Modelo {
 	
-	Stack<Multa> lista = new Stack<>();
+	Stack<Multa> stack = new Stack<>();
 
 	public Stack<Multa> ModeloJSON() throws FileNotFoundException
 	{
@@ -43,14 +52,14 @@ public class Modelo {
 
 				Multa m = new Multa(clase, tipo, infrac, descr, localidad, fechaHora, geo, id);
 
-				lista.insertarAlFinal(m);
+			stack.push(m);
 			}
 
 
 		}catch (FileNotFoundException e){
 			e.printStackTrace();
 		}
-		return lista;
+		return stack;
 
 	}
 
