@@ -16,21 +16,19 @@ import com.google.gson.JsonParser;
  *
  */
 public class Modelo {
-	
+
 	Stack<Multa> stack = new Stack<>();
 
-	public Stack<Multa> ModeloJSON() throws FileNotFoundException
-	{
+	public Stack<Multa> ModeloJSON() throws FileNotFoundException {
 		String path = "./data/comparendos_dei_2018_small.geojson";
 		JsonReader reader;
 
-		try{
+		try {
 
 			reader = new JsonReader(new FileReader(path));
 			JsonElement elem = JsonParser.parseReader(reader);
 			JsonArray features = elem.getAsJsonObject().get("features").getAsJsonArray();
-			for(JsonElement e : features)
-			{
+			for (JsonElement e : features) {
 				JsonElement properties = e.getAsJsonObject().get("properties");
 
 				String id = properties.getAsJsonObject().get("OBJECTID").getAsString();
@@ -43,20 +41,19 @@ public class Modelo {
 
 
 				List<Double> geo = new ArrayList<>();
-				if(e.getAsJsonObject().has("geometry") && !e.getAsJsonObject().get("geometry").isJsonNull())
-				{
-					for(JsonElement geoElem : e.getAsJsonObject().get("geometry").getAsJsonObject().get("coordinates").getAsJsonArray()){					
+				if (e.getAsJsonObject().has("geometry") && !e.getAsJsonObject().get("geometry").isJsonNull()) {
+					for (JsonElement geoElem : e.getAsJsonObject().get("geometry").getAsJsonObject().get("coordinates").getAsJsonArray()) {
 						geo.add(geoElem.getAsDouble());
 					}
 				}
 
 				Multa m = new Multa(clase, tipo, infrac, descr, localidad, fechaHora, geo, id);
 
-			stack.push(m);
+				stack.push(m);
 			}
 
 
-		}catch (FileNotFoundException e){
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		return stack;
@@ -64,6 +61,8 @@ public class Modelo {
 	}
 
 
-
-
+	public Multa buscar() {
+		return null;
+	}
 }
+

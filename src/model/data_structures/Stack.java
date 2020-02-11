@@ -59,6 +59,7 @@ public class Stack<T extends Comparable<T>> {
 	 */
 	public boolean isEmpty()
 	{
+
 		return topOfStack == 0;
 	}
 
