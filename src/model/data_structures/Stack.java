@@ -1,15 +1,9 @@
 package model.data_structures;
-
-import java.lang.reflect.Type;
-import java.util.ArrayDeque;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Stack<T extends Comparable<T>> {
 
-	private T[] stackArr;
-
-	private int topOfStack;
+	private Node<T> topOfStack;
 
 	private int stackSize;
 
@@ -18,7 +12,7 @@ public class Stack<T extends Comparable<T>> {
 	 */
 	public Stack()
 	{
-		topOfStack = 0;
+		topOfStack = null;
 		stackSize = 0;
 
 	}
@@ -28,16 +22,13 @@ public class Stack<T extends Comparable<T>> {
 	 * @param input
 	 */
 	public void push(T input) {
-		if (getSize() == stackArr.length){
-			stackArr[topOfStack] = input;
-			topOfStack++;;
-		}
-		else
+		if(topOfStack == null)
 		{
-			throw new NoSuchElementException();
+			topOfStack = new Node<>(input, null, null);
 		}
-	}
+		stackSize++;
 
+	}
 
 		/**
          *  ....
@@ -46,9 +37,9 @@ public class Stack<T extends Comparable<T>> {
 	{
 		if(isEmpty())
 			throw new NoSuchElementException();
-		topOfStack--;
-		T result = stackArr[topOfStack];
-		stackArr[topOfStack] = null;
+		T result = topOfStack.darValor();
+		topOfStack = topOfStack.darSiguiente();
+		stackSize--;
 
 		return result;
 	}
@@ -60,17 +51,7 @@ public class Stack<T extends Comparable<T>> {
 	public boolean isEmpty()
 	{
 
-		return topOfStack == 0;
-	}
-
-	/**
-	 * Gives the 1-based position of the item on the stack.
-	 * @return The 1-based position from the top of the stack where the object is located; the return value -1 indicates that the object is not on the stack.
-	 *
-	 */
-	public int search(T obj)
-	{
-		return 0;
+		return topOfStack == null;
 	}
 
 	/**
@@ -79,12 +60,16 @@ public class Stack<T extends Comparable<T>> {
 	 */
 	public int getSize()
 	{
-		return topOfStack;
+
+		return stackSize;
 	}
 
 	public T peek()
 	{
-		return null;
+		if(topOfStack != null)
+			return topOfStack.darValor();
+		else
+			throw new  NoSuchElementException();
 	}
 
 

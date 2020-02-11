@@ -44,9 +44,6 @@ public class Controller {
 							String info = respuesta.peek().toString();
 							view.displayOp0PrimeroData(info);
 
-							info = respuesta.pop().toString();
-							view.displayOp0UltimoData(info);
-
 							int pSize = respuesta.getSize();
 							view.displayOp0sizeData(pSize);
 
