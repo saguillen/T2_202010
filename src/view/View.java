@@ -9,7 +9,7 @@ public class View
 	     */
 	    public View()
 	    {
-
+			//Test
 	    }
 	/**
 	 * Implementacion del menu. Esta implementacion fue realizada por Ándres Ortiz. Monitor del curso, el cual
