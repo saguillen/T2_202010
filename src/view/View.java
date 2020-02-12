@@ -33,7 +33,7 @@ public class View
 	 * Displays an error message to the user if the option selected is invalid.
 	 */
 	public void badOption() {
-		System.out.println("\n?Invalid option !! \n");
+		System.out.println("\nInvalid option !! \n");
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class View
 
 
 	/**
-	 * Print option 0 data.
+	 * Print option 0 Info.
 	 */
 	public void displayOp0PrimeroData(String pInfo) {
 		System.out.println("====== Informacion Primer Comparendo ======");
@@ -66,34 +66,6 @@ public class View
 
 	}
 
-	// -------------------------------------------------------------
-	// Option 1
-	// -------------------------------------------------------------
-
-	/**
-	 * Print option 1 data.
-	 */
-	public void displayOp0UltimoData(String pInfo) {
-		System.out.println("====== Informacion Ultimo Comparendo  ======");
-		System.out.println("FECHA: "+ pInfo.split("\t")[0]);
-		System.out.println("CLASE DE VEHICULO: "+ pInfo.split("\t")[1]);
-		System.out.println("TIPO DE SERVICIO: " + pInfo.split("\t")[2]);
-		System.out.println("INFRACCION: "+ pInfo.split("\t")[3]);
-		System.out.println("DESCRIPCION DE INFRACC.: "+ pInfo.split("\t")[4]);
-		System.out.println("LOCALIDAD: "+ pInfo.split("\t")[5]);
-		System.out.println("GEOLOCALIZACION: "+pInfo.split("\t")[6]);
-		System.out.println("======================\n");
-
-	}
-
-	// -------------------------------------------------------------
-	// Option 2
-	// -------------------------------------------------------------
-
-
-	/**
-	 * Print option 2 data.
-	 */
 	public void displayOp0sizeData(int pSize) {
 		System.out.println("====== List Size ======");
 		System.out.println("SIZE: "+ pSize);
@@ -117,8 +89,9 @@ public class View
 	public void displayInput()
 	{
 		System.out.println("======================\n");
-		System.out.println("DIGITE EL ID DEL COMPARENDO A BUSCAR");
+		System.out.println("DIGITE EL ID DEL COMPARENDO A BUSCAR: ");
 		System.out.println("======================\n");
+		System.out.print("Input -> \n");
 	}
 }
 
