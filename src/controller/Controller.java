@@ -1,7 +1,11 @@
 package controller;
 
+import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import model.data_structures.Multa;
+import model.data_structures.Queue;
 import model.logic.Modelo;
 import view.View;
 
@@ -13,6 +17,9 @@ public class Controller {
 	/* Instancia de la Vista*/
 	private View view;
 	
+	private Scanner reader;
+
+	
 	/**
 	 * Crear la vista y el modelo del proyecto
 	 * @param capacidad tamaNo inicial del arreglo
@@ -23,81 +30,69 @@ public class Controller {
 		modelo = new Modelo();
 	}
 		
-	public void run() 
+	public void run() throws InputMismatchException
 	{
-		Scanner lector = new Scanner(System.in);
-		boolean fin = false;
-		String dato = "";
-		String respuesta = "";
+		reader = new Scanner(System.in);
+		try
+		{
+			boolean fin = false;
+			while( !fin ){
+				view.printMenu();
+				int option = reader.nextInt();
+				switch(option){
+				case 0: 
+					try {
 
-		while( !fin ){
-			view.printMenu();
+						Queue<Multa> respuesta = modelo.ModeloJSON();
+						String info = (respuesta.darPrimero().darValor().toString());
+						view.displayOp0PrimeroData(info);
 
-			int option = lector.nextInt();
-			switch(option){
+//						info = (respuesta.darPrimero().darValor().toString());
+//						view.displayOp0UltimoData(info);
+						
+						int pSize = respuesta.darTamaño();
+						view.displayOp0sizeData(pSize);
+
+					} catch (FileNotFoundException e) {
+
+						e.printStackTrace();
+					}
+					break;
+
 				case 1:
-					view.printMessage("--------- \nCrear Arreglo \nDar capacidad inicial del arreglo: ");
-				    int capacidad = lector.nextInt();
-//				    modelo = new Modelo(capacidad); 
-				    view.printMessage("Arreglo Dinamico creado");
-//				    view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;
+				//	LinkedListImp<Multa> respuesta = modelo.ModeloJSON();
 
-				case 2:
-					view.printMessage("--------- \nDar cadena (simple) a ingresar: ");
-					dato = lector.next();
-//					modelo.agregar(dato);
-					view.printMessage("Dato agregado");
-//					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;
+//					view.displayInput();
+//					String input = reader.next();
+//				Multa respuesta = modelo.buscar(input);
+//					view.displayInfoComparendo(respuesta.darId());
+					view.displayCluster();
+					Queue<Multa> respuesta = modelo.cluster();
+					System.out.println("tamaño del cluster" + respuesta.darTamaño());
 
-				case 3:
-					view.printMessage("--------- \nDar cadena (simple) a buscar: ");
-					dato = lector.next();
-//					respuesta = modelo.buscar(dato);
-					if ( respuesta != null)
+					for(int i=0; i<respuesta.darTamaño();i++)
 					{
-						view.printMessage("Dato encontrado: "+ respuesta);
+						Multa multa= respuesta.darActual(i).darValor();
+						view.displayInfoComparendosCluster(multa.toString());
 					}
-					else
-					{
-						view.printMessage("Dato NO encontrado");
-					}
-//					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;
-
-				case 4:
-					view.printMessage("--------- \nDar cadena (simple) a eliminar: ");
-					dato = lector.next();
-//					respuesta = modelo.eliminar(dato);
-					if ( respuesta != null)
-					{
-						view.printMessage("Dato eliminado "+ respuesta);
-					}
-					else
-					{
-						view.printMessage("Dato NO eliminado");							
-					}
-//					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;
-
-				case 5: 
-					view.printMessage("--------- \nContenido del Arreglo: ");
-					view.printModelo(modelo);
-//					view.printMessage("Numero actual de elementos " + modelo.darTamano() + "\n---------");						
-					break;	
-					
-				case 6: 
-					view.printMessage("--------- \n Hasta pronto !! \n---------"); 
-					lector.close();
-					fin = true;
-					break;	
-
+				break;
+//
+//					//Opcion No valida.
 				default: 
-					view.printMessage("--------- \n Opcion Invalida !! \n---------");
-					break;
+					view.badOption();
+					fin = true;
+//					break;
+					
+					
+					
+				}
 			}
 		}
+		catch(InputMismatchException e){
+			run();
 		
-	}	
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

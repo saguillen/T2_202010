@@ -1,8 +1,10 @@
 package model.data_structures;
 
+import java.util.Iterator;
+
 import jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor;
 
-public class Queue<T extends Comparable<T>> {
+public class Queue<T extends Comparable<T>> implements Iterable<T> {
 
 	private Node<T> primero;
 
@@ -75,5 +77,24 @@ public class Queue<T extends Comparable<T>> {
 	public int darTamaño()
 	{
 		return size;
+	}
+	
+	public Node<T> darActual(int pPosicion)
+	{
+		Node<T> actual = primero;
+		int posicion = 0;
+		while (actual!=null&&posicion!=pPosicion)
+		{
+			actual = actual.darSiguiente();
+			posicion++;
+		}
+		return actual;
+		
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
