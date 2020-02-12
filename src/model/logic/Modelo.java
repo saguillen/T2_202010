@@ -2,8 +2,10 @@ package model.logic;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -11,6 +13,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 
 import model.data_structures.Multa;
+import model.data_structures.Node;
 import model.data_structures.Queue;
 import model.data_structures.Stack;
 
@@ -176,6 +179,24 @@ public class Modelo {
 
 	}
 
+
+	public Queue<Multa> comparendosporInfraccion(Multa pM, String pInfracc)
+	{
+		Queue<Multa> queueM = null;
+
+		for(int i= 0; i < stack.getSize(); ++i)
+		{
+			Multa m = stack.peek();
+			if(m.darInfraccion().equalsIgnoreCase(pInfracc))
+			{
+					queueM.enqueue(m);
+			}
+		stack.pop(m);
+
+		}
+
+		return queueM;
+	}
 
 	public Multa buscar() {
 		return null;

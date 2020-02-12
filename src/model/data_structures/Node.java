@@ -9,8 +9,8 @@ public class Node<T extends Comparable<T>> {
     public Node(T pValue, Node<T> pSiguiente, Node<T> pAnterior)
     {
         valor = pValue;
-        anterior = pAnterior;
         siguiente = pSiguiente;
+        anterior = pAnterior;
     }
 
     public Node<T> darSiguiente()

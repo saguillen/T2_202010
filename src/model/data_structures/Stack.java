@@ -22,10 +22,14 @@ public class Stack<T extends Comparable<T>> {
 	 *
 	 * @param input
 	 */
-	public void push(T input) {
-		if(topOfStack == null)
+	public void push(T nuevo) {
+		if(topOfStack == null){
+			topOfStack = new Node<>(nuevo, null, null);
+		}
+		else
 		{
-			topOfStack = new Node<>(input, null, null);
+			Node<T> toPush = new Node<>(nuevo, topOfStack, null);
+			topOfStack = toPush;
 		}
 		stackSize++;
 
@@ -33,8 +37,9 @@ public class Stack<T extends Comparable<T>> {
 
 		/**
          *  ....
-         */
-	public T pop()
+		 * @param m
+		 */
+	public T pop(T m)
 	{
 		if(isEmpty())
 			throw new NoSuchElementException();

@@ -43,7 +43,6 @@ public class Controller {
 				switch(option){
 					case 0:
 						try {
-
 							Stack<Multa> resp = modelo.ModelJSON();
 							Queue<Multa> respuesta = modelo.ModeloJSON();
 							String info = (respuesta.darPrimero().darValor().toString());
@@ -84,14 +83,17 @@ public class Controller {
 						break;
 
 					case 2:
-						try{
-							Stack<Multa> r = modelo.ModelJSON();
-							
 
-
-						} catch (FileNotFoundException e) {
-							e.printStackTrace();
+						view.displayInputInfr();
+						String input = reader.next();
+						Queue<Multa> multaQueue = modelo.cluster();
+						for(int i = 0; i < multaQueue.darTamaño(); ++i)
+						{
+							Multa m = multaQueue.darActual(i).darValor();
+							Queue<Multa> r = modelo.comparendosporInfraccion(m , input);
+							view.displayQueueCompR(r.toString());
 						}
+
 
 						break;
 //

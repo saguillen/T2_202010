@@ -1,5 +1,7 @@
 package view;
 
+import model.data_structures.Multa;
+import model.data_structures.Node;
 import model.logic.Modelo;
 
 public class View
@@ -60,7 +62,7 @@ public class View
 		System.out.println("DESCRIPCION DE INFRACC.: "+ pInfo.split("\t")[4]);
 		System.out.println("LOCALIDAD: "+pInfo.split("\t")[5]);
 		System.out.println("GEOLOCALIZACION: "+pInfo.split("\t")[6]);
-		System.out.println("===========================\n");
+		System.out.println("=======================================================\n");
 
 	}
 
@@ -73,7 +75,7 @@ public class View
 		System.out.println("DESCRIPCION DE INFRACC.: "+ pInfo.split("\t")[4]);
 		System.out.println("LOCALIDAD: "+pInfo.split("\t")[5]);
 		System.out.println("GEOLOCALIZACION: "+pInfo.split("\t")[6]);
-		System.out.println("===========================\n");
+		System.out.println("======================================================\n");
 
 	}
 
@@ -125,17 +127,17 @@ public class View
 
 	}
 
-	public void displayInput()
+	public void displayInputInfr()
 	{
-		System.out.println("======================\n");
-		System.out.println("DIGITE EL ID DEL COMPARENDO A BUSCAR");
-		System.out.println("======================\n");
+		System.out.println("=========================================================\n");
+		System.out.println("DIGITE EL CODIGO DE INFRACCION DEL/LOS COMPARENDO A BUSCAR");
+		System.out.println("=========================================================\n");
 	}
 	public void displayCluster()
 	{
-		System.out.println("======================\n");
+		System.out.println("===========================================\n");
 		System.out.println("CLUSTER DE COMPARENDOS CON MISMA INFRACCION");
-		System.out.println("======================\n");
+		System.out.println("===========================================\n");
 	}
 	public void displayInfoComparendosCluster(String pInfo) {
 		System.out.println("====== Comparendos por cluster ======");
@@ -145,7 +147,7 @@ public class View
 		System.out.println("CLASE DE VEHICULO: "+ pInfo.split("\t")[1]);
 		System.out.println("TIPO DE SERVICIO: " + pInfo.split("\t")[2]);
 		System.out.println("LOCALIDAD: "+pInfo.split("\t")[5]);
-		System.out.println("===========================\n");
+		System.out.println("======================================\n");
 
 	}
 
@@ -158,7 +160,27 @@ public class View
 	public void displayTotalComparendosLeidos(int pSize)
 	{
 		System.out.println("====== Numero de Comparendos leidos. ======");
-		System.out.println(""+ pSize);
-		System.out.println("======================\n");
+		System.out.println("				  #"+ pSize);
+		System.out.println("===========================================\n");
+	}
+
+	public void displayQueueCompR(String pInfo)
+	{
+		System.out.println("====== Comparendos resultantes. ======");
+		System.out.println("INFRACCION: "+ pInfo.split("\t")[3]);
+		System.out.println("ID: "+pInfo.split("\t")[7]);
+		System.out.println("FECHA: "+ pInfo.split("\t")[0]);
+		System.out.println("CLASE DE VEHICULO: "+ pInfo.split("\t")[1]);
+		System.out.println("TIPO DE SERVICIO: " + pInfo.split("\t")[2]);
+		System.out.println("LOCALIDAD: "+pInfo.split("\t")[5]);
+		System.out.println("======================================\n");
+
+	}
+
+	public void displayQueueResSize(int numComp)
+	{
+		System.out.println("====== Numero de Comparendos leidos. ======");
+		System.out.println("				  #"+numComp);
+		System.out.println("===========================================");
 	}
 }
