@@ -60,12 +60,8 @@ public class Controller {
 					break;
 
 				case 1:
-				//	LinkedListImp<Multa> respuesta = modelo.ModeloJSON();
+					long start = System.nanoTime();
 
-//					view.displayInput();
-//					String input = reader.next();
-//				Multa respuesta = modelo.buscar(input);
-//					view.displayInfoComparendo(respuesta.darId());
 					view.displayCluster();
 					Queue<Multa> respuesta = modelo.cluster();
 					System.out.println("tamaño del cluster" + respuesta.darTamaño());
@@ -75,6 +71,8 @@ public class Controller {
 						Multa multa= respuesta.darActual(i).darValor();
 						view.displayInfoComparendosCluster(multa.toString());
 					}
+					long end = System.nanoTime();
+					System.out.println(end - start);
 				break;
 //
 //					//Opcion No valida.

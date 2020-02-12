@@ -74,43 +74,20 @@ public class Modelo {
 		String infracMax = "";
 		int repeActual = 0;
 		int repeMaxima=0;	
-		//		for (int i= 0; i<cola.darTamaño()-1;i++ )
-		//		{
-		//			Multa multa = cola.darActual(i).darValor();
-		//			for(int j=i+1; j<cola.darTamaño(); i++)
-		//			{
-		//				Multa otraMulta = cola.darActual(j).darValor();
-		//				if(multa.darInfraccion().equals(otraMulta.darInfraccion()))
-		//				{
-		//					repeActual++;
-		//				}else{
-		//					repeActual = 1;
-		//					infracActual = multa.darInfraccion();
-		//				}
-		//				if(repeActual>repeMaxima)
-		//				{
-		//					repeMaxima = repeActual;
-		//					infracMax = infracActual;
-		//					System.out.println(infracMax);
-		//					System.out.println("numero de repeticiones "+ repeMaxima);
-		//				}
-		//				Multa multa1 = cola.darActual(j).darValor();
-		//				if(multa1.darInfraccion().equalsIgnoreCase(infracMax))
-		//				{
-		//					cluster.enqueue(multa);
-		//				}
-		
-		ArrayList posiciones = new ArrayList<>();
+
+
 		for(int i = 0; i<cola.darTamaño();i++)
 		{
+			//cola.dequeue();
+
 			Multa m = cola.darActual(i).darValor();
 			if(m.darInfraccion().equalsIgnoreCase(infracActual)){
 				if(cola.darActual(i).darSiguiente().darValor().darInfraccion().equalsIgnoreCase(infracMax)){
-				repeActual++;
+					repeActual++;
 				}if(cola.darActual(i).darAnterior()!=null&&cola.darActual(i).darAnterior().darValor().darInfraccion().equalsIgnoreCase(infracMax)){
-				repeActual++;
+					repeActual++;
 				}
-				
+
 			}else{
 				repeActual= 1;
 				infracActual=m.darInfraccion();
@@ -122,15 +99,17 @@ public class Modelo {
 			}
 			if(m.darInfraccion().equalsIgnoreCase(infracMax))
 			{
-				if(cola.darActual(i).darSiguiente().darValor().darInfraccion().equalsIgnoreCase(infracMax))
-				cluster.enqueue(m);
-				if(cola.darActual(i).darAnterior()!=null&&cola.darActual(i).darAnterior().darValor().darInfraccion().equalsIgnoreCase(infracMax))
-				{
-				cluster.enqueue(m);
-				}
+				if(cola.darActual(i).darSiguiente().darValor().darInfraccion().equalsIgnoreCase(infracMax)||cola.darActual(i).darAnterior()!=null&&cola.darActual(i).darAnterior().darValor().darInfraccion().equalsIgnoreCase(infracMax))
+					cluster.enqueue(m);
+
 			}
+		
 		}
+
+
+		System.out.println("Tamaño de la cola: " + cola.darTamaño());
 		return cluster;
+
 	}
 
 

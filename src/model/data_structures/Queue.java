@@ -61,17 +61,29 @@ public class Queue<T extends Comparable<T>> implements Iterable<T> {
 		
 	}
 	
-	public T dequeue(){
+//	public T dequeue(){
+//		
+//		if(!isEmpty())
+//		{
+//			return null;
+//		}
+//		T valor = primero.darValor();
+//		 primero = primero.darSiguiente();
+//		 size--;
+//		 
+//		 return valor;
+//	}
+	public void dequeue(){
 		
-		if(!isEmpty())
-		{
-			return null;
-		}
-		T valor = primero.darValor();
+////		if(!isEmpty())
+//		{
+//			return null;
+//		}
+		//T valor = primero.darValor();
 		 primero = primero.darSiguiente();
 		 size--;
 		 
-		 return valor;
+		// return valor;
 	}
 
 	public int darTamaño()
