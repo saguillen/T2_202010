@@ -3,6 +3,7 @@ import java.util.NoSuchElementException;
 
 public class Stack<T extends Comparable<T>> {
 
+
 	private Node<T> topOfStack;
 
 	private int stackSize;
@@ -71,9 +72,12 @@ public class Stack<T extends Comparable<T>> {
 		else
 			throw new  NoSuchElementException();
 	}
-
+	public Node<T> getTopOfStack() {
+		return topOfStack;
+	}
 
 }
+
 
 
 

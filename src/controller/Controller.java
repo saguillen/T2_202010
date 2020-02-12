@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.data_structures.Multa;
+import model.data_structures.Queue;
 import model.data_structures.Stack;
 import model.logic.Modelo;
 import view.View;
@@ -18,17 +19,20 @@ public class Controller {
 	private View view;
 
 	private Scanner reader;
-	
+
+
 	/**
 	 * Crear la vista y el modelo del proyecto
+	 * @param capacidad tamaNo inicial del arreglo
 	 */
 	public Controller ()
 	{
 		view = new View();
 		modelo = new Modelo();
 	}
-		
-	public void run() {
+
+	public void run() throws InputMismatchException
+	{
 		reader = new Scanner(System.in);
 		try
 		{
@@ -40,12 +44,20 @@ public class Controller {
 					case 0:
 						try {
 
-							Stack<Multa> respuesta = modelo.ModeloJSON();
-							String info = respuesta.peek().toString();
-							view.displayOp0PrimeroData(info);
+							Stack<Multa> resp = modelo.ModelJSON();
+							Queue<Multa> respuesta = modelo.ModeloJSON();
+							String info = (respuesta.darPrimero().darValor().toString());
+							String info2 = resp.getTopOfStack().darValor().toString();
+							//
+							view.displayTotalComparendosLeidos(resp.getSize());
+							//
+							view.displayOp0PrimeroDataCola(info);
+							//
+							view.displayOp0PrimeroDataPila(info2);
 
-							int pSize = respuesta.getSize();
-							view.displayOp0sizeData(pSize);
+//						info = (respuesta.darPrimero().darValor().toString());
+//						view.displayOp0UltimoData(info);
+
 
 						} catch (FileNotFoundException e) {
 
@@ -54,22 +66,51 @@ public class Controller {
 						break;
 
 					case 1:
-						view.displayInput();
-						String input = reader.next();
-						Multa respuesta = modelo.buscar();
-						view.displayInfoComparendo(respuesta.toString());
+						//	LinkedListImp<Multa> respuesta = modelo.ModeloJSON();
+
+//					view.displayInput();
+//					String input = reader.next();
+//				Multa respuesta = modelo.buscar(input);
+//					view.displayInfoComparendo(respuesta.darId());
+						view.displayCluster();
+						Queue<Multa> respuesta = modelo.cluster();
+						view.displayClusterSize(respuesta.darTamaño());
+
+						for(int i=0; i<respuesta.darTamaño();i++)
+						{
+							Multa multa= respuesta.darActual(i).darValor();
+							view.displayInfoComparendosCluster(multa.toString());
+						}
 						break;
 
-					//Opcion No valida.
+					case 2:
+						try{
+							Stack<Multa> r = modelo.ModelJSON();
+							
+
+
+						} catch (FileNotFoundException e) {
+							e.printStackTrace();
+						}
+
+						break;
+//
+//					//Opcion No valida.
 					default:
 						view.badOption();
 						fin = true;
-						break;
+//					break;
+
+
+
 				}
 			}
 		}
 		catch(InputMismatchException e){
 			run();
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

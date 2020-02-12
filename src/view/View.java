@@ -2,27 +2,25 @@ package view;
 
 import model.logic.Modelo;
 
-public class View 
+public class View
 {
-	    /**
-	     * Metodo constructor
-	     */
-	    public View()
-	    {
-			//Test
-	    }
 	/**
-	 * Implementacion del menu. Esta implementacion fue realizada por Ándres Ortiz. Monitor del curso, el cual
-	 * incentivo el uso de este para que el usuario tenga una mejor interaccion con el proyecto.
+	 * Metodo constructor
 	 */
+	public View()
+	{
+
+	}
+
 	public void printMenu()
 	{
-		System.out.println(" **==========================**");
-		System.out.println(" ||      ==== MENU ====      ||");
+		System.out.println(" **===========================================**");
+		System.out.println(" ||              ==== MENU ====               ||");
 
-		System.out.println(" || 0. Cargar los Datos .    ||");
-		System.out.println(" || 1. Consultar informacion de un comparendo. ||");
-		System.out.println(" **==========================**\n");
+		System.out.println(" || 0.Carga de Datos.                         ||");
+		System.out.println(" || 1.Comparendos consecutivos por Infraccion.||");
+		System.out.println(" || 2.Ultimos comparendos por Infraccion.     ||");
+		System.out.println(" **===========================================**\n");
 
 		// display hint
 		this.displayHint();
@@ -33,7 +31,7 @@ public class View
 	 * Displays an error message to the user if the option selected is invalid.
 	 */
 	public void badOption() {
-		System.out.println("\nInvalid option !! \n");
+		System.out.println("\n Invalid option !! \n");
 	}
 
 	/**
@@ -51,10 +49,10 @@ public class View
 
 
 	/**
-	 * Print option 0 Info.
+	 * Print option 0 data.
 	 */
-	public void displayOp0PrimeroData(String pInfo) {
-		System.out.println("====== Informacion Primer Comparendo ======");
+	public void displayOp0PrimeroDataCola(String pInfo) {
+		System.out.println("====== Informacion Primer Comparendo de la Cola ======");
 		System.out.println("FECHA: "+ pInfo.split("\t")[0]);
 		System.out.println("CLASE DE VEHICULO: "+ pInfo.split("\t")[1]);
 		System.out.println("TIPO DE SERVICIO: " + pInfo.split("\t")[2]);
@@ -66,6 +64,47 @@ public class View
 
 	}
 
+	public void displayOp0PrimeroDataPila(String pInfo) {
+		System.out.println("====== Informacion Primer Comparendo de la Pila ======");
+		System.out.println("FECHA: "+ pInfo.split("\t")[0]);
+		System.out.println("CLASE DE VEHICULO: "+ pInfo.split("\t")[1]);
+		System.out.println("TIPO DE SERVICIO: " + pInfo.split("\t")[2]);
+		System.out.println("INFRACCION: "+ pInfo.split("\t")[3]);
+		System.out.println("DESCRIPCION DE INFRACC.: "+ pInfo.split("\t")[4]);
+		System.out.println("LOCALIDAD: "+pInfo.split("\t")[5]);
+		System.out.println("GEOLOCALIZACION: "+pInfo.split("\t")[6]);
+		System.out.println("===========================\n");
+
+	}
+
+	// -------------------------------------------------------------
+	// Option 1
+	// -------------------------------------------------------------
+
+	/**
+	 * Print option 1 data.
+	 */
+	public void displayOp0UltimoData(String pInfo) {
+		System.out.println("====== Informacion Ultimo Comparendo  ======");
+		System.out.println("FECHA: "+ pInfo.split("\t")[0]);
+		System.out.println("CLASE DE VEHICULO: "+ pInfo.split("\t")[1]);
+		System.out.println("TIPO DE SERVICIO: " + pInfo.split("\t")[2]);
+		System.out.println("INFRACCION: "+ pInfo.split("\t")[3]);
+		System.out.println("DESCRIPCION DE INFRACC.: "+ pInfo.split("\t")[4]);
+		System.out.println("LOCALIDAD: "+ pInfo.split("\t")[5]);
+		System.out.println("GEOLOCALIZACION: "+pInfo.split("\t")[6]);
+		System.out.println("======================\n");
+
+	}
+
+	// -------------------------------------------------------------
+	// Option 2
+	// -------------------------------------------------------------
+
+
+	/**
+	 * Print option 2 data.
+	 */
 	public void displayOp0sizeData(int pSize) {
 		System.out.println("====== List Size ======");
 		System.out.println("SIZE: "+ pSize);
@@ -89,9 +128,37 @@ public class View
 	public void displayInput()
 	{
 		System.out.println("======================\n");
-		System.out.println("DIGITE EL ID DEL COMPARENDO A BUSCAR: ");
+		System.out.println("DIGITE EL ID DEL COMPARENDO A BUSCAR");
 		System.out.println("======================\n");
-		System.out.print("Input -> \n");
+	}
+	public void displayCluster()
+	{
+		System.out.println("======================\n");
+		System.out.println("CLUSTER DE COMPARENDOS CON MISMA INFRACCION");
+		System.out.println("======================\n");
+	}
+	public void displayInfoComparendosCluster(String pInfo) {
+		System.out.println("====== Comparendos por cluster ======");
+		System.out.println("INFRACCION: "+ pInfo.split("\t")[3]);
+		System.out.println("ID: "+pInfo.split("\t")[7]);
+		System.out.println("FECHA: "+ pInfo.split("\t")[0]);
+		System.out.println("CLASE DE VEHICULO: "+ pInfo.split("\t")[1]);
+		System.out.println("TIPO DE SERVICIO: " + pInfo.split("\t")[2]);
+		System.out.println("LOCALIDAD: "+pInfo.split("\t")[5]);
+		System.out.println("===========================\n");
+
+	}
+
+	public void displayClusterSize(int pSize)
+	{
+		System.out.println("====== Cluster Size ======");
+		System.out.println("SIZE: "+ pSize);
+	}
+
+	public void displayTotalComparendosLeidos(int pSize)
+	{
+		System.out.println("====== Numero de Comparendos leidos. ======");
+		System.out.println(""+ pSize);
+		System.out.println("======================\n");
 	}
 }
-

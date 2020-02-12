@@ -62,7 +62,7 @@ public class Multa implements Comparable<Multa>{
 
     public String toString()
     {
-        return FECHA_HORA+"\t"+CLASE_VEHICULO+"\t"+TIPO_SERVICIO+"\t"+INFRACCION+"\t"+DES_INFRAC+"\t"+LOCALIDAD+"\t"+GEO;
+        return FECHA_HORA+"\t"+CLASE_VEHICULO+"\t"+TIPO_SERVICIO+"\t"+INFRACCION+"\t"+DES_INFRAC+"\t"+LOCALIDAD+"\t"+GEO+"\t"+OBJECT_ID;
     }
 
     public String darId()
