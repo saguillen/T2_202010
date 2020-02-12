@@ -99,12 +99,18 @@ public class Modelo {
 		//				{
 		//					cluster.enqueue(multa);
 		//				}
+		
+		ArrayList posiciones = new ArrayList<>();
 		for(int i = 0; i<cola.darTamaño();i++)
 		{
 			Multa m = cola.darActual(i).darValor();
 			if(m.darInfraccion().equalsIgnoreCase(infracActual)){
+				if(cola.darActual(i).darSiguiente().darValor().darInfraccion().equalsIgnoreCase(infracMax)){
 				repeActual++;
-
+				}if(cola.darActual(i).darAnterior()!=null&&cola.darActual(i).darAnterior().darValor().darInfraccion().equalsIgnoreCase(infracMax)){
+				repeActual++;
+				}
+				
 			}else{
 				repeActual= 1;
 				infracActual=m.darInfraccion();
@@ -112,29 +118,19 @@ public class Modelo {
 			if(repeActual>repeMaxima)
 			{
 				repeMaxima=repeActual;
-				infracMax=infracActual;
+				infracMax=infracActual;                          //&&cola.darActual(i).darSiguiente().darValor().darInfraccion().equalsIgnoreCase(infracMax)
 			}
 			if(m.darInfraccion().equalsIgnoreCase(infracMax))
 			{
+				if(cola.darActual(i).darSiguiente().darValor().darInfraccion().equalsIgnoreCase(infracMax))
 				cluster.enqueue(m);
+				if(cola.darActual(i).darAnterior()!=null&&cola.darActual(i).darAnterior().darValor().darInfraccion().equalsIgnoreCase(infracMax))
+				{
+				cluster.enqueue(m);
+				}
 			}
 		}
-
-
-		//		for(int i= 0; i<cola.darTamaño();i++ )
-		//		{
-		//			Multa multa = cola.darActual(i).darValor();
-		//			if(multa.darInfraccion().equalsIgnoreCase(infracMax))
-		//			{
-		//				cluster.enqueue(multa);
-		//			}
-		//			System.out.println(cluster.darTamaño());
-		//		}
-
 		return cluster;
-
-
-
 	}
 
 
