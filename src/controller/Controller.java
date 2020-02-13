@@ -14,9 +14,7 @@ import view.View;
 
 public class Controller {
 
-<<<<<<< HEAD
-}
-=======
+
 	/* Instancia del Modelo*/
 	private Modelo modelo;
 	//
@@ -116,4 +114,4 @@ public class Controller {
 		}
 	}
 }
->>>>>>> op3imp
+
