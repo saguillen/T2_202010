@@ -183,4 +183,17 @@ public class View
 		System.out.println("				  #"+numComp);
 		System.out.println("===========================================");
 	}
+	public void displayInputUltimos()
+	{
+		System.out.println("=========================================================\n");
+		System.out.println("DIGITE EL NUMERO N DE ULTIMOS COMPARENDOS A BUSCAR");
+		System.out.println("=========================================================\n");
+	}
+	public void displayUltimosComparendosSize(int pSize)
+	{
+		System.out.println("====== INFORMACIÓN =====================================\n");
+		System.out.println("SE ENCONTRARON: "+ pSize+ " COMPARENDOS");
+		System.out.println("=========================================================\n");
+	}
+	
 }

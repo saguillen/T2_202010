@@ -80,6 +80,18 @@ public class Stack<T extends Comparable<T>> {
 	public Node<T> getTopOfStack() {
 		return topOfStack;
 	}
+	   public Node<T> darActual(int pPosicion)
+	    {
+	        Node<T> actual = topOfStack;
+	        int posicion = 0;
+	        while (actual!=null&&posicion!=pPosicion)
+	        {
+	            actual = actual.darSiguiente();
+	            posicion++;
+	        }
+	        return actual;
+
+	    }
 
 }
 

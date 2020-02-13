@@ -12,5 +12,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Sergio Guillen/Downloads/Semestres/3ero/Estructuras DeD/gson-2.8.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

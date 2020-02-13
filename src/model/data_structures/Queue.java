@@ -72,7 +72,7 @@ public class Queue<T extends Comparable<T>> implements Iterable<T> {
         return valor;
     }
 
-    public int darTamaÃ±o()
+    public int darTamaño()
     {
         return size;
     }

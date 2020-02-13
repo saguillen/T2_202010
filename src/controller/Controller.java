@@ -54,8 +54,7 @@ public class Controller {
 							//
 							view.displayOp0PrimeroDataPila(info2);
 
-//						info = (respuesta.darPrimero().darValor().toString());
-//						view.displayOp0UltimoData(info);
+
 
 
 						} catch (FileNotFoundException e) {
@@ -65,17 +64,11 @@ public class Controller {
 						break;
 
 					case 1:
-						//	LinkedListImp<Multa> respuesta = modelo.ModeloJSON();
-
-//					view.displayInput();
-//					String input = reader.next();
-//				Multa respuesta = modelo.buscar(input);
-//					view.displayInfoComparendo(respuesta.darId());
 						view.displayCluster();
 						Queue<Multa> respuesta = modelo.cluster();
-						view.displayClusterSize(respuesta.darTamaÃ±o());
+						view.displayClusterSize(respuesta.darTamaño());
 
-						for(int i=0; i<respuesta.darTamaÃ±o();i++)
+						for(int i=0; i<respuesta.darTamaño();i++)
 						{
 							Multa multa= respuesta.darActual(i).darValor();
 							view.displayInfoComparendosCluster(multa.toString());
@@ -86,12 +79,14 @@ public class Controller {
 
 						view.displayInputInfr();
 						String input = reader.next();
-						Queue<Multa> multaQueue = modelo.cluster();
-						for(int i = 0; i < multaQueue.darTamaÃ±o(); ++i)
+						view.displayInputUltimos();
+						String N = reader.next();								
+						Queue<Multa> r = modelo.comparendosporInfraccion(Integer.parseInt(N), input);
+						view.displayUltimosComparendosSize(r.darTamaño());
+						for(int i = 0; i < r.darTamaño(); ++i)
 						{
-							Multa m = multaQueue.darActual(i).darValor();
-							Queue<Multa> r = modelo.comparendosporInfraccion(m , input);
-							view.displayQueueCompR(r.toString());
+							Multa m = r.darActual(i).darValor();
+							view.displayQueueCompR(m.toString());
 						}
 
 

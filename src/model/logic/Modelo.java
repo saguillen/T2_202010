@@ -67,7 +67,7 @@ public class Modelo {
 
 		}catch (FileNotFoundException e){
 			e.printStackTrace();
-		}System.out.println(cola.darTamaÃ±o());
+		}System.out.println(cola.darTamaño());
 		return cola;
 
 	}
@@ -79,34 +79,8 @@ public class Modelo {
 		String infracMax = "";
 		int repeActual = 0;
 		int repeMaxima=0;
-		//		for (int i= 0; i<cola.darTamaÃ±o()-1;i++ )
-		//		{
-		//			Multa multa = cola.darActual(i).darValor();
-		//			for(int j=i+1; j<cola.darTamaÃ±o(); i++)
-		//			{
-		//				Multa otraMulta = cola.darActual(j).darValor();
-		//				if(multa.darInfraccion().equals(otraMulta.darInfraccion()))
-		//				{
-		//					repeActual++;
-		//				}else{
-		//					repeActual = 1;
-		//					infracActual = multa.darInfraccion();
-		//				}
-		//				if(repeActual>repeMaxima)
-		//				{
-		//					repeMaxima = repeActual;
-		//					infracMax = infracActual;
-		//					System.out.println(infracMax);
-		//					System.out.println("numero de repeticiones "+ repeMaxima);
-		//				}
-		//				Multa multa1 = cola.darActual(j).darValor();
-		//				if(multa1.darInfraccion().equalsIgnoreCase(infracMax))
-		//				{
-		//					cluster.enqueue(multa);
-		//				}
 
-		ArrayList posiciones = new ArrayList<>();
-		for(int i = 0; i<cola.darTamaÃ±o();i++)
+		for(int i = 0; i<cola.darTamaño();i++)
 		{
 			Multa m = cola.darActual(i).darValor();
 			if(m.darInfraccion().equalsIgnoreCase(infracActual)){
@@ -180,21 +154,22 @@ public class Modelo {
 	}
 
 
-	public Queue<Multa> comparendosporInfraccion(Multa pM, String pInfracc)
+	public Queue<Multa> comparendosporInfraccion(int N, String pInfracc)
 	{
-		Queue<Multa> queueM = null;
-
-		for(int i= 0; i < stack.getSize(); ++i)
+		Queue<Multa> queueM = new Queue<>();
+		for(int i= 0; i < stack.getSize()&&queueM.darTamaño()<N; ++i)
 		{
-			Multa m = stack.peek();
-			if(m.darInfraccion().equalsIgnoreCase(pInfracc))
-			{
+				Multa m = stack.darActual(i).darValor();
+				if(m.darInfraccion().equalsIgnoreCase(pInfracc))
+				{
 					queueM.enqueue(m);
-			}
-		stack.pop(m);
-
+				}
+			stack.pop(m);
 		}
+		System.out.println("tamaño de la pila " + stack.getSize() );
+		System.out.println("Tamaño de la cola por multa final" +queueM.darTamaño());
 
+		
 		return queueM;
 	}
 
