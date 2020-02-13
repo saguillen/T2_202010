@@ -16,20 +16,35 @@ import model.data_structures.Multa;
 import model.data_structures.Node;
 import model.data_structures.Queue;
 import model.data_structures.Stack;
-
+import model.data_structures.IQueue;
+import model.data_structures.IStack;
 
 /**
  * Definicion del modelo del mundo
  *
  */
+	
+
 public class Modelo {
+	
+	
+   private IQueue<Multa> cola;
 
-	Queue<Multa> cola = new Queue<>();
-	Stack<Multa> stack = new Stack<>();
+   private IStack<Multa> stack;
+	//Stack<Multa> stack = new Stack<>();
 
-
-	public Queue<Multa> ModeloJSON() throws FileNotFoundException
+	public Modelo()
 	{
+		cola = new Queue<Multa>();
+		
+		stack = new Stack<Multa>();
+		
+	}
+	
+
+	public IQueue<Multa> ModeloJSON() throws FileNotFoundException
+	{
+
 		String path = "./data/comparendos_dei_2018_small.geojson";
 		JsonReader reader;
 		try{
@@ -112,7 +127,7 @@ public class Modelo {
 		return cluster;
 	}
 
-	public Stack<Multa> ModelJSON() throws FileNotFoundException {
+	public IStack<Multa> ModelJSON() throws FileNotFoundException {
 		String path = "./data/comparendos_dei_2018_small.geojson";
 		JsonReader reader;
 
@@ -156,8 +171,9 @@ public class Modelo {
 
 	public Queue<Multa> comparendosporInfraccion(int N, String pInfracc)
 	{
+	
 		Queue<Multa> queueM = new Queue<>();
-		for(int i= 0; i < stack.getSize()&&queueM.darTamaño()<N; ++i)
+		for(int i= 0; i < stack.getSize()&&queueM.darTamaño()<=N; ++i)
 		{
 				Multa m = stack.darActual(i).darValor();
 				if(m.darInfraccion().equalsIgnoreCase(pInfracc))

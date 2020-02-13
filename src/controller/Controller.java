@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import model.data_structures.IQueue;
+import model.data_structures.IStack;
 import model.data_structures.Multa;
 import model.data_structures.Queue;
 import model.data_structures.Stack;
@@ -43,8 +45,8 @@ public class Controller {
 				switch(option){
 					case 0:
 						try {
-							Stack<Multa> resp = modelo.ModelJSON();
-							Queue<Multa> respuesta = modelo.ModeloJSON();
+							IStack<Multa> resp = modelo.ModelJSON();
+							IQueue<Multa> respuesta = modelo.ModeloJSON();
 							String info = (respuesta.darPrimero().darValor().toString());
 							String info2 = resp.getTopOfStack().darValor().toString();
 							//

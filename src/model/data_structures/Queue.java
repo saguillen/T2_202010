@@ -2,7 +2,7 @@ package model.data_structures;
 
 import java.util.Iterator;
 
-public class Queue<T extends Comparable<T>> implements Iterable<T> {
+public class Queue<T extends Comparable<T>> implements IQueue<T>{
 
     private Node<T> primero;
 
@@ -59,17 +59,17 @@ public class Queue<T extends Comparable<T>> implements Iterable<T> {
 
     }
 
-    public T dequeue(){
+    public void dequeue(){
 
-        if(!isEmpty())
-        {
-            return null;
-        }
+//        if(!isEmpty())
+//        {
+//            return null;
+//        }
         T valor = primero.darValor();
         primero = primero.darSiguiente();
         size--;
 
-        return valor;
+//        return valor;
     }
 
     public int darTamaño()
@@ -90,9 +90,13 @@ public class Queue<T extends Comparable<T>> implements Iterable<T> {
 
     }
 
-    @Override
     public Iterator<T> iterator() {
         // TODO Auto-generated method stub
         return null;
     }
+
+
+
+
+	
 }

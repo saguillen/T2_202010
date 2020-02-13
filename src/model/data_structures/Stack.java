@@ -1,7 +1,7 @@
 package model.data_structures;
 import java.util.NoSuchElementException;
 
-public class Stack<T extends Comparable<T>> {
+public class Stack<T extends Comparable<T>> implements IStack<T> {
 
 
 	private Node<T> topOfStack;
@@ -92,6 +92,10 @@ public class Stack<T extends Comparable<T>> {
 	        return actual;
 
 	    }
+
+
+
+
 
 }
 
